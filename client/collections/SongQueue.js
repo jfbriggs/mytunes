@@ -8,11 +8,14 @@ var SongQueue = Backbone.Collection.extend({
       if (this.length === 1) {
         this.playFirst();
       }
-      console.log(e);
+      console.log(this.length);
     }, this);
 
+
     this.on('ended', function(e) {
+      // console.log("songqueue", e);
       this.shift();
+      console.log(this.length);
       if (this.length > 0) {
         this.playFirst();
       }
@@ -22,6 +25,7 @@ var SongQueue = Backbone.Collection.extend({
       if (this.length > 0) {
         this.remove(e);
       }
+      console.log(this.length);
     }, this);
   },
 
