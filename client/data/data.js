@@ -1,5 +1,6 @@
 // data.js - Defines an array of data regarding song files and their accompanying details.
 var songData = [
+
   {
     url: 'https://s3-us-west-1.amazonaws.com/hr-mytunes/data/04+One+In+A+Million.mp3',
     title: 'One In A Million',
@@ -21,3 +22,17 @@ var songData = [
     artist: 'Aaliyah',
   }
 ];
+
+// $.ajax({
+//   url: 'https://api.parse.com/1/classes/songs/',
+//   type: 'GET',
+//   data: {'keys': 'url,title,artist'},
+//   success: function(data) {
+//     songData = data.results;
+//     console.log(songData);
+//   },
+//   error: function() {
+//     console.log('error');
+//   }
+// });
+

@@ -3,6 +3,7 @@ var AppView = Backbone.View.extend({
 
   initialize: function(params) {
     this.playerView = new PlayerView({model: this.model.get('currentSong')});
+    this.searchView = new SearchView({model: this.model.get('search')});
     this.songQueueView = new SongQueueView({collection: this.model.get('songQueue')});
     this.libraryView = new LibraryView({collection: this.model.get('library')});
 
@@ -16,6 +17,7 @@ var AppView = Backbone.View.extend({
   render: function() {
     return this.$el.html([
       this.playerView.$el,
+      this.searchView.$el,
       this.songQueueView.$el,
       this.libraryView.$el
     ]);

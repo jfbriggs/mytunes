@@ -3,6 +3,7 @@ var AppModel = Backbone.Model.extend({
 
   initialize: function(params) {
     this.set('currentSong', new SongModel());
+    this.set('search', new SearchModel());
     this.set('songQueue', new SongQueue());
 
     /* Note that 'this' is passed as the third argument. That third argument is
@@ -23,8 +24,12 @@ var AppModel = Backbone.Model.extend({
       this.get('songQueue').add(song);
     }, this);
 
-    this.get('songQueue').on('dequeue', function(song) {
-      this.set('currentSong', song);
+    this.get('songQueue').on('nextSong add', function() {
+      this.set('currentSong', this.get('songQueue').at(0));
+    }, this);
+
+    this.get('search').on('submit', function() {
+      params.library.pullData();
     }, this);
 
     // this.get('songQueue').on('ended', function(song) {
